@@ -7,7 +7,7 @@ function listTabs() {
     browser.tabs.query({}, function (tabs) {
         for (let i = 0; i < tabs.length; ++i) {
             if (!tabs[i].url.startsWith("chrome") && !tabs[i].url.startsWith("moz") && !tabs[i].url.startsWith("about")) {
-                let p = document.createElement('p');
+                let li = document.createElement('li');
                 p.appendChild(document.createTextNode(tabs[i].url));
                 document.getElementById('list').appendChild(p);
             }
