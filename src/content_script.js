@@ -16,7 +16,9 @@ function listTabs() {
                     li.appendChild(document.createTextNode(tab.url));
                     li.id = tab.id;
                     li.onclick = function() {
-                        browser.tabs.update(parseInt(this.id), { active: true }, function() {});
+                        browser.tabs.update(parseInt(this.id), { active: true }, function(tab) {
+                            browser.windows.update(tab.windowId, { focused: true }, function() {});
+                        });
                     };
                     list.appendChild(li);
             }
