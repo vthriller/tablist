@@ -4,20 +4,19 @@ window.browser = (function () {
 })();
 
 function listTabs() {
-    browser.windows.getAll({}, function(windows) {
+    // `populate` is not supported by Edge
+    browser.windows.getAll({populate: true}, function(windows) {
         for(w of windows) {
             let li = document.createElement('li');
             document.getElementById('list').appendChild(li);
             let list = document.createElement('ol');
             li.appendChild(list);
 
-    browser.tabs.query({windowId: w.id}, function (tabs) {
-        for (let tab of tabs) {
+        for (let tab of w.tabs) {
                 let li = document.createElement('li');
                 li.appendChild(document.createTextNode(tab.url));
                 list.appendChild(li);
         }
-    });
 
         }
     });
