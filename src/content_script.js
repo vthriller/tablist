@@ -14,6 +14,10 @@ function listTabs() {
             for (let tab of w.tabs) {
                     let li = document.createElement('li');
                     li.appendChild(document.createTextNode(tab.url));
+                    li.id = tab.id;
+                    li.onclick = function() {
+                        browser.tabs.update(parseInt(this.id), { active: true }, function() {});
+                    };
                     list.appendChild(li);
             }
 
