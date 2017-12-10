@@ -13,11 +13,9 @@ function listTabs() {
 
     browser.tabs.query({windowId: w.id}, function (tabs) {
         for (let i = 0; i < tabs.length; ++i) {
-            if (!tabs[i].url.startsWith("chrome") && !tabs[i].url.startsWith("moz") && !tabs[i].url.startsWith("about")) {
                 let li = document.createElement('li');
                 li.appendChild(document.createTextNode(tabs[i].url));
                 list.appendChild(li);
-            }
         }
     });
 
