@@ -11,11 +11,11 @@ function listTabs() {
             let list = document.createElement('ol');
             wli.appendChild(list);
 
-        for (let tab of w.tabs) {
-                let li = document.createElement('li');
-                li.appendChild(document.createTextNode(tab.url));
-                list.appendChild(li);
-        }
+            for (let tab of w.tabs) {
+                    let li = document.createElement('li');
+                    li.appendChild(document.createTextNode(tab.url));
+                    list.appendChild(li);
+            }
 
             document.getElementById('list').appendChild(wli);
         }
