@@ -6,7 +6,12 @@ window.browser = (function () {
 function listTabs() {
     // `populate` is not supported by Edge
     browser.windows.getAll({populate: true}, function(windows) {
+        document.getElementById('window-count').innerHTML = windows.length;
+        let tabCount = 0;
+
         for(w of windows) {
+            tabCount += w.tabs.length;
+
             let wli = document.createElement('li');
             let list = document.createElement('ol');
             wli.appendChild(list);
@@ -25,6 +30,8 @@ function listTabs() {
 
             document.getElementById('list').appendChild(wli);
         }
+
+        document.getElementById('tab-count').innerHTML = tabCount;
     });
 }
 
