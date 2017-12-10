@@ -12,9 +12,9 @@ function listTabs() {
             li.appendChild(list);
 
     browser.tabs.query({windowId: w.id}, function (tabs) {
-        for (let i = 0; i < tabs.length; ++i) {
+        for (let tab of tabs) {
                 let li = document.createElement('li');
-                li.appendChild(document.createTextNode(tabs[i].url));
+                li.appendChild(document.createTextNode(tab.url));
                 list.appendChild(li);
         }
     });
@@ -25,8 +25,8 @@ function listTabs() {
 
 function activateTabs() {
     browser.tabs.query({}, async function(tabs) {
-        for (let i=0; i<tabs.length; ++i) {
-            await browser.tabs.update(tabs[i].id, {
+        for (let tab of tabs) {
+            await browser.tabs.update(tab.id, {
                 active: true
             });
         }
