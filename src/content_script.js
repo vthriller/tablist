@@ -4,13 +4,23 @@ window.browser = (function () {
 })();
 
 function listTabs() {
-    browser.tabs.query({}, function (tabs) {
+    browser.windows.getAll({}, function(windows) {
+        for(w of windows) {
+            let li = document.createElement('li');
+            document.getElementById('list').appendChild(li);
+            let list = document.createElement('ol');
+            li.appendChild(list);
+
+    browser.tabs.query({windowId: w.id}, function (tabs) {
         for (let i = 0; i < tabs.length; ++i) {
             if (!tabs[i].url.startsWith("chrome") && !tabs[i].url.startsWith("moz") && !tabs[i].url.startsWith("about")) {
                 let li = document.createElement('li');
-                p.appendChild(document.createTextNode(tabs[i].url));
-                document.getElementById('list').appendChild(p);
+                li.appendChild(document.createTextNode(tabs[i].url));
+                list.appendChild(li);
             }
+        }
+    });
+
         }
     });
 }
