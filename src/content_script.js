@@ -7,10 +7,9 @@ function listTabs() {
     // `populate` is not supported by Edge
     browser.windows.getAll({populate: true}, function(windows) {
         for(w of windows) {
-            let li = document.createElement('li');
-            document.getElementById('list').appendChild(li);
+            let wli = document.createElement('li');
             let list = document.createElement('ol');
-            li.appendChild(list);
+            wli.appendChild(list);
 
         for (let tab of w.tabs) {
                 let li = document.createElement('li');
@@ -18,6 +17,7 @@ function listTabs() {
                 list.appendChild(li);
         }
 
+            document.getElementById('list').appendChild(wli);
         }
     });
 }
