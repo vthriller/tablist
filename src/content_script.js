@@ -19,7 +19,7 @@ function listTabs() {
             for (let tab of w.tabs) {
                     let li = document.createElement('li');
 
-                    let title = document.createElement('title');
+                    let title = document.createElement('tab-title');
                     title.appendChild(document.createTextNode(tab.title));
                     li.appendChild(title);
 
